@@ -1,0 +1,20 @@
+[project]
+name = "aws-ops-mcp"
+version = "0.1.0"
+description = "Read-only local MCP tools for AWS operations"
+requires-python = ">=3.12"
+dependencies = [
+  "boto3>=1.35,<2",
+  "mcp[cli]>=2,<3",
+  "pydantic>=2.10,<3",
+]
+
+[project.scripts]
+aws-ops-mcp = "aws_ops_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aws_ops_mcp"]

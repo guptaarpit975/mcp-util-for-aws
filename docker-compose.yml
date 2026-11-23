@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: opslens-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: opslens
+      MYSQL_USER: opslens
+      MYSQL_PASSWORD: opslens
+      MYSQL_ROOT_PASSWORD: local-root-only
+    ports:
+      - "127.0.0.1:${OPSLENS_MYSQL_PORT:-3307}:3306"
+    volumes:
+      - opslens_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uopslens", "-popslens"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  opslens_mysql_data:

@@ -1,0 +1,9 @@
+{
+  "name": "opslens-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --dir frontend dev",
+    "build": "pnpm --dir frontend build",
+    "lint": "pnpm --dir frontend lint"
+  }
+}
